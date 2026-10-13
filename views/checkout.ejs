@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+  <section class="container my-5">
+    <h2 class="fw-bold mb-4">Checkout</h2>
+    <div id="checkout-empty-message" class="text-center py-5" style="display:none;">
+      <i class="bi bi-bag-x display-1 text-muted"></i>
+      <p class="text-muted mt-3 fs-5">Your cart is empty. Add some products first.</p>
+      <a href="/products" class="btn btn-dark mt-2">Shop Now</a>
+    </div>
+    <div id="checkout-content" class="row g-4" style="display:none;">
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm mb-4"><div class="card-body">
+          <h5 class="fw-bold mb-3">Customer Details</h5>
+          <form id="checkout-form">
+            <div class="mb-3"><label class="form-label">Full Name</label><input type="text" class="form-control" id="customerName" placeholder="John Doe" required /></div>
+            <div class="mb-3"><label class="form-label">Phone Number</label><input type="tel" class="form-control" id="customerPhone" placeholder="9876543210" required /></div>
+            <div class="mb-3"><label class="form-label">Delivery Address</label><textarea class="form-control" id="customerAddress" rows="3" placeholder="House no, Street, City, State, Pincode" required></textarea></div>
+            <h5 class="fw-bold mt-4 mb-3">Payment Method</h5>
+            <div class="form-check mb-2 p-3 border rounded">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="Cash on Delivery" checked />
+              <label class="form-check-label fw-semibold" for="cod"><i class="bi bi-cash-coin me-1"></i> Cash on Delivery</label>
+            </div>
+            <div class="form-check mb-3 p-3 border rounded">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="online" value="Dummy Online Payment" />
+              <label class="form-check-label fw-semibold" for="online"><i class="bi bi-credit-card me-1"></i> Online Payment (Demo)</label>
+            </div>
+            <div id="checkout-error" class="alert alert-danger" style="display:none;"></div>
+            <button type="submit" class="btn btn-dark w-100 btn-lg fw-semibold" id="place-order-btn">Place Order</button>
+          </form>
+        </div></div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm"><div class="card-body">
+          <h5 class="fw-bold mb-3">Order Summary</h5>
+          <div id="checkout-items-container"></div>
+          <hr />
+          <div class="d-flex justify-content-between mb-2"><span class="text-muted">Subtotal</span><span id="checkout-subtotal">₹0.00</span></div>
+          <div class="d-flex justify-content-between mb-2"><span class="text-muted">Delivery</span><span class="text-success">Free</span></div>
+          <hr />
+          <div class="d-flex justify-content-between fw-bold fs-5"><span>Total</span><span id="checkout-total">₹0.00</span></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+<%- include('partials/footer') %>
+<script>document.addEventListener("DOMContentLoaded", renderCheckoutPage);</script>

@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+  <section class="container my-5">
+    <div class="text-center mb-5">
+      <i class="bi bi-check-circle-fill display-1 text-success"></i>
+      <h2 class="fw-bold mt-3">Order Successful!</h2>
+      <p class="text-muted">Thank you, <%= order.customer_name %>! Your order has been placed.</p>
+    </div>
+    <div class="row justify-content-center"><div class="col-lg-7">
+      <div class="card border-0 shadow-sm mb-4"><div class="card-body">
+        <h5 class="fw-bold mb-3">Order Details</h5>
+        <p class="mb-1"><strong>Order ID:</strong> #<%= order.id %></p>
+        <p class="mb-1"><strong>Customer Name:</strong> <%= order.customer_name %></p>
+        <p class="mb-1"><strong>Phone:</strong> <%= order.phone %></p>
+        <p class="mb-1"><strong>Delivery Address:</strong> <%= order.address %></p>
+        <p class="mb-1"><strong>Payment Method:</strong> <%= order.payment_method %></p>
+        <p class="mb-0"><strong>Order Date:</strong> <%= order.created_at %></p>
+      </div></div>
+      <div class="card border-0 shadow-sm mb-4"><div class="card-body">
+        <h5 class="fw-bold mb-3">Order Summary</h5>
+        <table class="table align-middle">
+          <thead><tr><th>Product</th><th class="text-center">Qty</th><th class="text-end">Price</th><th class="text-end">Subtotal</th></tr></thead>
+          <tbody>
+            <% items.forEach(function(item) { %>
+              <tr><td><%= item.product_name %></td><td class="text-center"><%= item.quantity %></td>
+              <td class="text-end">₹<%= Number(item.price).toFixed(2) %></td>
+              <td class="text-end">₹<%= (item.price * item.quantity).toFixed(2) %></td></tr>
+            <% }); %>
+          </tbody>
+          <tfoot><tr><th colspan="3" class="text-end">Total Amount</th><th class="text-end">₹<%= Number(order.total_amount).toFixed(2) %></th></tr></tfoot>
+        </table>
+      </div></div>
+      <div class="text-center">
+        <a href="/products" class="btn btn-dark px-4">Continue Shopping</a>
+        <a href="/" class="btn btn-outline-dark px-4 ms-2">Back to Home</a>
+      </div>
+    </div></div>
+  </section>
+<%- include('partials/footer') %>
+<script>try { localStorage.removeItem("shopease_cart"); } catch (e) {}</script>

@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+  <section class="container my-5">
+    <div class="mb-4"><h2 class="fw-bold">Shop All Products</h2><p class="text-muted">Browse our full collection.</p></div>
+    <div class="mb-4 d-flex flex-wrap gap-2">
+      <button class="btn btn-dark btn-sm category-btn active" data-category="all">All</button>
+      <% categories.forEach(function(cat) { %><button class="btn btn-outline-dark btn-sm category-btn" data-category="<%= cat %>"><%= cat %></button><% }); %>
+    </div>
+    <div class="row g-4">
+      <% products.forEach(function(product) { %><%- include('partials/product-card', { product: product }) %><% }); %>
+    </div>
+    <% if (products.length === 0) { %><p class="text-center text-muted py-5">No products available right now.</p><% } %>
+  </section>
+<%- include('partials/footer') %>
+<script>
+  document.querySelectorAll(".category-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".category-btn").forEach(function (b) { b.classList.remove("active", "btn-dark"); b.classList.add("btn-outline-dark"); });
+      btn.classList.add("active", "btn-dark"); btn.classList.remove("btn-outline-dark");
+      var sel = btn.getAttribute("data-category");
+      document.querySelectorAll(".product-item").forEach(function (item) {
+        item.style.display = (sel === "all" || item.getAttribute("data-category") === sel) ? "" : "none";
+      });
+    });
+  });
+</script>

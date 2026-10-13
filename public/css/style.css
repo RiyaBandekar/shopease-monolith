@@ -1,0 +1,14 @@
+:root { --brand-dark: #1c2530; --brand-accent: #f5a623; }
+body { font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fafafa; color: #222; }
+.main-navbar { background-color: var(--brand-dark); }
+.main-navbar .nav-link { color: #e6e6e6 !important; font-weight: 500; }
+.main-navbar .nav-link:hover { color: var(--brand-accent) !important; }
+.arch-badge { font-size: 0.65rem; vertical-align: middle; text-transform: uppercase; letter-spacing: .04em; }
+.hero-section { background: linear-gradient(135deg, #1c2530 0%, #2c3e50 60%, #34495e 100%); }
+.hero-icon { color: rgba(255, 255, 255, 0.15); }
+.product-card { border-radius: 12px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.1) !important; }
+.product-img { height: 180px; object-fit: cover; background: #f1f1f1; }
+.footer-section { background: var(--brand-dark); }
+.cart-item-img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; }
+.qty-control button { width: 32px; height: 32px; padding: 0; line-height: 1; }

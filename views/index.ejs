@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+  <section class="hero-section text-white">
+    <div class="container py-5">
+      <div class="row align-items-center py-5">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold mb-3">Shop Smarter, <br />Live Better.</h1>
+          <p class="lead mb-4">Top-quality electronics, fashion, home essentials and more, all in one place.</p>
+          <a href="/products" class="btn btn-warning btn-lg fw-semibold px-4">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block text-center"><i class="bi bi-bag-heart display-1 hero-icon"></i></div>
+      </div>
+    </div>
+  </section>
+  <section class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold mb-0">Featured Products</h2>
+      <a href="/products" class="btn btn-outline-dark btn-sm">View All <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+      <% featuredProducts.forEach(function(product) { %><%- include('partials/product-card', { product: product }) %><% }); %>
+    </div>
+  </section>
+<%- include('partials/footer') %>
